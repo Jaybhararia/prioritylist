@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:prioritylist/Task_Data.dart';
+import 'package:provider/provider.dart';
 
 import 'To_Do_Screen.dart';
 
@@ -13,11 +15,14 @@ class Mmain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyApp(),
-      theme: ThemeData.dark().copyWith(
-        primaryColor: Color(0xFF3551a1),
-        backgroundColor: Color(0xFF3551a1),
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => Taskdata(),
+      child: MaterialApp(
+        home: MyApp(),
+        theme: ThemeData.dark().copyWith(
+          primaryColor: Color(0xFF3551a1),
+          backgroundColor: Color(0xFF3551a1),
+        ),
       ),
     );
   }

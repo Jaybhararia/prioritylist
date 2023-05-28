@@ -1,14 +1,23 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+import 'package:prioritylist/TaskList.dart';
+import 'package:provider/provider.dart';
+import 'Task_Data.dart';
+import 'Tasks.dart';
 import 'To_Do_Screen.dart';
 
 class AddNewTask extends StatelessWidget {
-  const AddNewTask({Key? key}) : super(key: key);
+
+  // List<Tasks> tasks;
+
+
 
   @override
   Widget build(BuildContext context) {
+    String currtask = '';
+
     return Container(
     color : Color(0xFF19254b),
       child: Container(
@@ -49,7 +58,7 @@ class AddNewTask extends StatelessWidget {
                           // obscureText: true,
                           // cursorColor: const Color(0xFF39304d),
                           onChanged: (value){
-
+                              currtask = value;
                           },
                           decoration: InputDecoration(
                               labelText: 'New Task',
@@ -88,6 +97,8 @@ class AddNewTask extends StatelessWidget {
                     elevation: 5,
                     child: MaterialButton(
                       onPressed: () {
+                          Provider.of<Taskdata>(context, listen: false).addtask(currtask);
+                          Navigator.pop(context);
                       },
 
                       minWidth: 200.0,
