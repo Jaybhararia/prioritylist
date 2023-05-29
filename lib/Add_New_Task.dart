@@ -25,96 +25,95 @@ class AddNewTask extends StatelessWidget {
           color: Color(0xFF4c1e9c),
           borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
       ),
-        child: Flexible(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 15,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 15,
+            ),
+            Text(
+                'Add New Task',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+                color: Color(0xFF9ACD32),
               ),
-              Text(
-                  'Add New Task',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  color: Color(0xFF9ACD32),
+            ),
+            Row(
+              children: [
+                Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 20, top: 30 , bottom: 30),
+                      child: Icon(Icons.task),
+                    )
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 20, top: 30 , bottom: 30),
-                child: Row(
-                  children: [
-                    Expanded(
-                        flex: 1,
-                        child: Icon(Icons.task)
-                    ),
-                    Expanded(
-                      flex: 5,
-                      child: Container(
+                Expanded(
+                  flex: 5,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 20, top: 30 , bottom: 30),
+                    child: Container(
 
-                        child: TextField(
-                          autofocus: true,
-                            autocorrect: true,
-                          // obscureText: true,
-                          // cursorColor: const Color(0xFF39304d),
-                          onChanged: (value){
-                              currtask = value;
-                          },
-                          decoration: InputDecoration(
-                              labelText: 'New Task',
-                              focusColor: Color(0xFFea06ff),
-                              hintText: 'Enter New Task Here',
-                              labelStyle: TextStyle(
-                                color: Color(0xFFFFFF00)
+                      child: TextField(
+                        autofocus: true,
+                          autocorrect: true,
+                        // obscureText: true,
+                        // cursorColor: const Color(0xFF39304d),
+                        onChanged: (value){
+                            currtask = value;
+                        },
+                        decoration: InputDecoration(
+                            labelText: 'New Task',
+                            focusColor: Color(0xFFea06ff),
+                            hintText: 'Enter New Task Here',
+                            labelStyle: TextStyle(
+                              color: Color(0xFFFFFF00)
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFFFF00),
+                                width: 1,
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: const BorderSide(
-                                  color: Color(0xFFFFFF00),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(
+                                  color: Color(0xFFea06ff),
                                   width: 1,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(
-                                    color: Color(0xFFea06ff),
-                                    width: 1,
-                                  )
-                              )
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
-                child: Expanded(
-                  child: Material(
-                    color: Colors.yellowAccent,
-                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                    elevation: 5,
-                    child: MaterialButton(
-                      onPressed: () {
-                          Provider.of<Taskdata>(context, listen: false).addtask(currtask);
-                          Navigator.pop(context);
-                      },
-
-                      minWidth: 200.0,
-                      height: 42.0,
-                      child: Text(
-                        'Add',
-                        style: TextStyle(
-                          color: Color(0xFF1e1a31),
+                                )
+                            )
                         ),
                       ),
                     ),
                   ),
                 ),
-              )
-            ],
-          ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16.0),
+              child: Material(
+                color: Colors.yellowAccent,
+                borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                elevation: 5,
+                child: MaterialButton(
+                  onPressed: () {
+                      Provider.of<Taskdata>(context, listen: false).addTask(currtask);
+                      Navigator.pop(context);
+                  },
+
+                  minWidth: 200.0,
+                  height: 42.0,
+                  child: Text(
+                    'Add',
+                    style: TextStyle(
+                      color: Color(0xFF1e1a31),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

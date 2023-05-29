@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:prioritylist/Task_Data.dart';
 import 'package:provider/provider.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'Task_Data.dart';
 import 'To_Do_Screen.dart';
 
-void main() {
-  runApp(
-      const Mmain()
-  );
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isFirstRun = prefs.getBool('firstRun') ?? true;
+  if (isFirstRun) {
+    await prefs.setBool('firstRun', false);
+
+  }
+
+  runApp(Mmain());
 }
 
 class Mmain extends StatelessWidget {
@@ -16,7 +23,7 @@ class Mmain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context) => Taskdata(),
+      create: (BuildContext context) => Taskdata()..loadTasks(),
       child: MaterialApp(
         home: MyApp(),
         theme: ThemeData.dark().copyWith(
@@ -27,5 +34,8 @@ class Mmain extends StatelessWidget {
     );
   }
 }
+
+
+
 
 
